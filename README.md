@@ -21,9 +21,7 @@ Extract `compiler.py` and `compilator.py` to unziped folder with replacing.
 
 Install requirements from `requirements.txt`: `pip install -r requirements.txt`.
 
-Launch `compilator.py`: `python compilator.py -normal <path-to-.rapl>`.
-
-Example: `python compilation.py C:\Users\user\Desktop\riskuap-main\examples\abc.rapl`.
+Launch `compilator.py`: `python compilator.py`.
 
 Wait for compilation.
 
