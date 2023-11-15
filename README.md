@@ -29,4 +29,6 @@ After that, in `distro` folder, you can find `compiler.exe`.
 
 Use `compiler.exe -normal <path>` to compile `.rapl` files.
 
+You can move the `compiler.exe` anywhere you want, everything will work!
+
 Done!
