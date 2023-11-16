@@ -37,6 +37,6 @@ Use `compiler.exe -normal <path>` in Windows to compile `.rapl` files.
 
 Use `./compiler -normal <path>` in Linux to compile `.rapl` files.
 
-You can move the `compiler.exe` anywhere you want, everything will work!
+You can move the `compiler` file anywhere you want, everything will work!
 
 Done!
