@@ -19,7 +19,9 @@ Unzip `riskuap-main`
 
 Extract `compiler.py` and `compilator.py` to unziped folder with replacing.
 
-Install requirements from `requirements.txt`: `pip install -r requirements.txt`.
+Install requirements from `requirements.txt` of `riskuap` repo: `pip install -r requirements.txt`.
+
+Install `pyinstaller`: `pip install pyinstaller`
 
 Launch `compilator.py`: `python compilator.py`.
 
