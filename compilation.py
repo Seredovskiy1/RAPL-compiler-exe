@@ -12,9 +12,9 @@ if __name__ == "__main__":
     ])
 
     # Compiled executable is in the 'dist' directory
-    compiled_exe = os.path.join('dist', 'compiler.exe')
+    compiled_exe = os.path.join('dist', 'compiler')
 
     # Uncomment the line below if you want to run the compiled executable immediately
     # subprocess.run([compiled_exe])
 
-    print("Compilation completed. To use the compiler, run the generated 'compiler.exe' with the desired file path.")
+    print("Compilation completed. To use the compiler, run the generated 'dist/compiler' executable in cmd or terminal")
