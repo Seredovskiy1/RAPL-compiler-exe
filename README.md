@@ -25,7 +25,9 @@ Install `pyinstaller`: `pip install pyinstaller` (Windows)
 
 Install `pyinstaller`: `pip3 install pyinstaller` (Linux)
 
-Launch `compilator.py`: `python compilator.py`.
+Launch `compilator.py`: `python compilator.py`.  (Windows)
+
+Launch `compilator.py`: `python3 compilator.py`.  (Linux)
 
 Wait for compilation.
 
