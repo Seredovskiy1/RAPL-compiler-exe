@@ -31,7 +31,7 @@ Launch `compilator.py`: `python3 compilator.py`.  (Linux)
 
 Wait for compilation.
 
-After that, in `distro` folder, you can find `compiler.exe`.
+After that, in `distro` folder, you can find `compiler.exe / compiler (Linux)` file.
 
 Use `compiler.exe -normal <path>` in Windows to compile `.rapl` files.
 
