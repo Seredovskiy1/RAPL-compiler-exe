@@ -25,18 +25,28 @@ Install `pyinstaller`: `pip install pyinstaller` (Windows)
 
 Install `pyinstaller`: `pip3 install pyinstaller` (Linux)
 
-Launch `compilator.py`: `python compilator.py`.  (Windows)
+Launch `compilation.py`: `python compilation.py`.  (Windows)
 
-Launch `compilator.py`: `python3 compilator.py`.  (Linux)
+Launch `compilation.py`: `python3 compilation.py`.  (Linux)
 
 Wait for compilation.
 
 After that, in `distro` folder, you can find `compiler.exe / compiler (Linux)` file.
 
-Use `compiler.exe -normal <path>` in Windows to compile `.rapl` files.
-
-Use `./compiler -normal <path>` in Linux to compile `.rapl` files.
-
 You can move the `compiler` file anywhere you want, everything will work!
 
 Done!
+## USAGE
+
+usage: `compiler.exe [-h] [-mode {normal,gui}] [-file [FILE_PATH]]`
+
+RAPL Compiler script.
+
+options:
+
+  `-h, --help` - show this help message and exit
+
+  `-mode {normal,gui}` - Mode for script execution: normal or gui
+
+  `-file [FILE_PATH]` - Path to the file to compile
+
