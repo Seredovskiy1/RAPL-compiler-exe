@@ -158,11 +158,7 @@ def main():
 
     args = parser.parse_args()
 
-    if not args.file_path:
-        clear_terminal()
-        print("Error: You must choose the file using the -file option.")
-        parser.print_help()
-    elif args.mode == 'gui':
+    if args.mode == 'gui':
         gui()
     elif args.mode == 'normal':
         compile_files(args.file_path)
