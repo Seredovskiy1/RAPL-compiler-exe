@@ -5,6 +5,8 @@ import argparse
 import tkinter as tk
 from tkinter import filedialog
 from tkinter.messagebox import showinfo
+from ttkthemes import ThemedTk
+from tkinter import ttk
 import os
 import platform
 
@@ -36,6 +38,7 @@ def select_file(entry):
     # Виклик функції для очищення терміналу після вибору файлу
     clear_terminal()
 
+
 # ...
 
 def open_file_editor(selected_file):
@@ -45,10 +48,10 @@ def open_file_editor(selected_file):
                 content = file_content_text.get("1.0", tk.END)
                 file.write(content)
             showinfo("Save", "File saved successfully.")
-            
+
             # Виклик функції для очищення терміналу після збереження
             clear_terminal()
-            
+
         except Exception as e:
             showinfo("Error", f"Error saving file: {e}")
 
@@ -59,6 +62,21 @@ def open_file_editor(selected_file):
 
             # Save the content
             save_content()
+
+    def highlight_words(event=None):
+        words_to_highlight = ["import", "as", "env", "function",
+                                "end", "cmd", "conditional"]  # Add your list of words here
+        for word in words_to_highlight:
+            file_content_text.tag_configure(word, foreground="red")  # Set the tag color (foreground) to red
+
+            start_index = "1.0"
+            while True:
+                start_index = file_content_text.search(word, start_index, stopindex="end", nocase=True)
+                if not start_index:
+                    break
+                end_index = f"{start_index}+{len(word)}c"
+                file_content_text.tag_add(word, start_index, end_index)
+                start_index = end_index
 
     file_edit_window = tk.Toplevel()
     file_edit_window.title("File Editor")
@@ -75,6 +93,9 @@ def open_file_editor(selected_file):
 
     # Save option in the File menu
     file_menu.add_command(label="Save", command=save_content)
+
+    # Highlight words option in the File menu
+    file_menu.add_command(label="Highlight Words", command=highlight_words)
 
     # Text widget to display the content of the selected file
     file_content_text = tk.Text(file_edit_window, wrap=tk.WORD, height=20, width=60)
@@ -106,46 +127,48 @@ def open_file_editor(selected_file):
     # Bind Ctrl+S to save_content
     file_edit_window.bind('<Control-s>', save_on_ctrl_s)
 
-# ...
-
-
-
+    # Bind KeyRelease event to highlight_words
+    file_content_text.bind('<KeyRelease>', highlight_words)
 
 # ...
+
+
+
+
+
 
 def gui():
-    def update_edit_button_state():
-        edit_button["state"] = tk.NORMAL if file_entry.get() else tk.DISABLED
+    def update_button_states():
+        file_selected = bool(file_entry.get())
+        edit_button["state"] = tk.NORMAL if file_selected else tk.DISABLED
+        compile_button["state"] = tk.NORMAL if file_selected else tk.DISABLED
 
     def compile_and_display_message():
         compile_files(file_entry.get())
         showinfo("Compilation", "Compilation completed.")
 
-    root = tk.Tk()
+    root = ThemedTk(theme="breeze")  # Set the theme to "breeze"
     root.title("RAPL Compiler GUI")
     root.geometry("308x300")
     root.resizable(False, False)
 
     # Entry widget to display the selected file path
-    file_entry = tk.Entry(root, width=40)
+    file_entry = ttk.Entry(root, width=40)
     file_entry.grid(row=0, column=0, padx=10, pady=10, columnspan=2)
 
     # Button to open the file dialog
-    select_button = tk.Button(root, text="Select File", command=lambda: [select_file(file_entry), update_edit_button_state()])
+    select_button = ttk.Button(root, text="Select File", command=lambda: [select_file(file_entry), update_button_states()])
     select_button.grid(row=1, column=0, pady=10, columnspan=2)
 
     # Button to open the file editor window
-    edit_button = tk.Button(root, text="Edit", command=lambda: open_file_editor(file_entry.get()), state=tk.DISABLED)
+    edit_button = ttk.Button(root, text="Edit", command=lambda: open_file_editor(file_entry.get()), state=tk.DISABLED)
     edit_button.grid(row=2, column=0, pady=10, columnspan=2)
 
     # Button to compile the file
-    compile_button = tk.Button(root, text="Compile", command=compile_and_display_message)
+    compile_button = ttk.Button(root, text="Compile", command=compile_and_display_message, state=tk.DISABLED)
     compile_button.grid(row=3, column=0, columnspan=2, pady=10)
 
     root.mainloop()
-
-# ...
-
 
 
 # ...
